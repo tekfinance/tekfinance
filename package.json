@@ -1,0 +1,24 @@
+{
+  "name": "tekfinance",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "clean": "rimraf -rf node_modules .turbo dist out */*/.turbo */packages/dist */*/.next */*/node_modules */bun.lockb */*/bun.lockb"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.1.2",
+    "typescript": "latest"
+  },
+  "workspaces": [
+    "packages/**",
+    "servers/**",
+    "web/**"
+  ],
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.24.2",
+    "skia-canvas": "^1.0.2"
+  }
+}

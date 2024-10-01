@@ -1,0 +1,1 @@
+_Enter a description to use coupon campaign._

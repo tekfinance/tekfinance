@@ -1,0 +1,1 @@
+_Send an image to use for coupon campaign._

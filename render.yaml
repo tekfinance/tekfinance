@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: dixie
+    runtime: docker 
+    plan: starter
+    autoDeploy: true
+    dockerfilePath: servers/dixie/Dockerfile    
+    buildFilter:
+      paths:
+        - servers/dixie/*.json
+        - servers/dixie/**/*.ts
+        - servers/dixie/Dockerfile
+    envVars:
+      - fromGroup: servers/dixie
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dixieDB
+          property: connectionString
+    domains:
+      - v1.api.tekfinance.fun
+  - type: web
+    name: kitkat
+    runtime: docker
+    plan: starter
+    autoDeploy: true
+    dockerfilePath: web/kitkat/Dockerfile    
+    buildFilter:
+      paths:
+        - web/kitkat/*.json
+        - web/kitkat/**/*.ts
+        - web/kitkat/Dockerfile
+    envVars:
+      - fromGroup: web/kitkat
+      - key: API_BASE_URL
+        fromService: 
+          type: web
+          name: dixie
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: NEXT_PUBLIC_API_BASE_URL
+        fromService: 
+          type: web
+          name: dixie
+          envVarKey: RENDER_EXTERNAL_URL
+    domains:
+      - bot.tekfinance.fun
+databases:
+  - name: dixieDB
+    user: admin
+    plan: starter
+    
