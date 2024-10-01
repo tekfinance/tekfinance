@@ -18,7 +18,6 @@ import { privateChatOnly } from "./utils/methods";
 import { onConfirmRedeem } from "./onConfirmRedeem";
 import { createCouponScene, onCoupon } from "./onCoupon";
 
-
 export class Dixie extends Service {
   static tipCommand = "tip";
   static fundCommand = "fund";
@@ -53,6 +52,9 @@ export class Dixie extends Service {
     ];
 
     bot.telegram.setMyCommands(defaults, { scope: { type: "default" } });
+    bot.telegram.setMyCommands(defaults, {
+      scope: { type: "all_group_chats" },
+    });
     bot.telegram.setMyCommands(
       [
         { command: Dixie.menuCommand, description: "Menu" },
