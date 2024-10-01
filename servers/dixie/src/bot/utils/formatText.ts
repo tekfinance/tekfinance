@@ -2,10 +2,10 @@ import { type PathOrFileDescriptor, readFileSync as read } from "fs";
 
 export function cleanText(value: string) {
   return value
-    .replace(/\[/g, "\\[")
-    .replace(/\]/g, "\\]")
-    .replace(/\(/g, "\\(")
-    .replace(/\)/g, "\\)")
+    // .replace(/\[/g, "\\[")
+    // .replace(/\]/g, "\\]")
+    // .replace(/\(/g, "\\(")
+    // .replace(/\)/g, "\\)")
     .replace(/\~/g, "\\~")
     .replace(/\#/g, "\\#")
     .replace(/\+/g, "\\+")

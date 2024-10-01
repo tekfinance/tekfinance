@@ -5,8 +5,9 @@ import { Service } from "../core";
 import { mapWallets } from "../modules/wallets/wallet.controller";
 import { updateUser, upsertUser } from "../modules/users/user.controller";
 
-import { onMenu } from "./onMenu";
 import { onTip } from "./onTip";
+import { onHelp } from "./onHelp";
+import { onMenu } from "./onMenu";
 import { onFund } from "./onFund";
 import { onStart } from "./onStart";
 import { onRefer } from "./onRefer";
@@ -66,10 +67,10 @@ export class Dixie extends Service {
           command: Dixie.referCommand,
           description: "Refer a friend to earn points",
         },
-        {
-          command: Dixie.couponCommand,
-          description: "Create and fund a new coupon",
-        },
+        // {
+        //   command: Dixie.couponCommand,
+        //   description: "Create and fund a new coupon",
+        // },
         ...defaults,
       ],
       {
@@ -83,13 +84,14 @@ export class Dixie extends Service {
     const menuCommand = privateChatOnly(onMenu);
     const fundCommand = privateChatOnly(onFund);
     const referCommand = privateChatOnly(onRefer);
-    const couponCommand = privateChatOnly(onCoupon);
-    const redeemCommand = privateChatOnly(onRedeem);
+   // const couponCommand = privateChatOnly(onCoupon);
+   // const redeemCommand = privateChatOnly(onRedeem);
     const settingsCommand = privateChatOnly(onSettings);
-    const confirmRedeemCommand = privateChatOnly(onConfirmRedeem);
+    //const confirmRedeemCommand = privateChatOnly(onConfirmRedeem);
     const chainCommand = privateChatOnly(onChain);
     const languageCommand = privateChatOnly(onLanguage);
 
+    bot.help(onHelp);
     bot.start(startCommand);
     bot.action(/language/, languageCommand);
     bot.action(Dixie.menuCommand, onMenu);
@@ -97,14 +99,14 @@ export class Dixie extends Service {
     bot.action(/chain/, chainCommand);
     bot.action(Dixie.referCommand, referCommand);
     bot.action(Dixie.settingsCommand, settingsCommand);
-    bot.action(/^confirmRedeem/, confirmRedeemCommand);
+   // bot.action(/^confirmRedeem/, confirmRedeemCommand);
 
     bot.command(Dixie.tipCommand, onTip);
     bot.command(Dixie.menuCommand, menuCommand);
     bot.command(Dixie.fundCommand, fundCommand);
     bot.command(Dixie.referCommand, referCommand);
-    bot.command(Dixie.redeemCommand, redeemCommand);
-    bot.command(Dixie.couponCommand, couponCommand);
+   // bot.command(Dixie.redeemCommand, redeemCommand);
+   // bot.command(Dixie.couponCommand, couponCommand);
     bot.command(Dixie.settingsCommand, settingsCommand);
   }
 

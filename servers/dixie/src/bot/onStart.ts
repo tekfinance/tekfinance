@@ -19,7 +19,7 @@ const onRefer = async (context: Context) => {
 
     if (user) {
       await context.telegram.sendMessage(
-        referer,
+        user.chat!,
         cleanText(
           readFileSync("./locale/en/notifyReferer.md", "utf-8").replace(
             "%referer%",
