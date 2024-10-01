@@ -4,9 +4,7 @@ import passportCustom, { type VerifiedCallback } from "passport-custom";
 export const TelegramStrategy = (
   authToken: string,
   verify: (
-    payload: NonNullable<
-      import("@telegram-apps/init-data-node").InitDataParsed
-    >,
+    payload: any,
     done: VerifiedCallback
   ) => void
 ) =>
