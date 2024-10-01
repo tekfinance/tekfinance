@@ -1,4 +1,5 @@
 import type { Scenes } from "telegraf";
+import { PublicKey } from "@solana/web3.js";
 
 import * as models from "./db/models";
 import type { createDB, Repository } from "./core";
@@ -32,6 +33,9 @@ declare module "./core/repository" {
     port: number;
     host: string;
     domain?: string;
+    feePercentage: number;
+    splFee: number;
+    marketingWallet: PublicKey,
   };
 
   type Database = ReturnType<typeof createDB<typeof models>>;

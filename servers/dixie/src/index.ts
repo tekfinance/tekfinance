@@ -1,6 +1,7 @@
 import "dotenv/config";
 import type { z } from "zod";
 import { readFileSync } from "fs";
+import { PublicKey } from "@solana/web3.js";
 
 import Fastify from "fastify";
 import cors from "@fastify/cors";
@@ -24,6 +25,10 @@ const secret = process.env.SECRET_KEY!;
 const appURL = process.env.APP_URL!;
 const domain = process.env.RENDER_EXTERNAL_HOSTNAME;
 const telegramAccessToken = process.env.TELEGRAM_ACCESS_TOKEN!;
+
+export const splFee=Number(process.env.SPL_FEE!);
+export const feePercentage =Number( process.env.FEE_PERCENTAGE!);
+export const marketingWallet = new PublicKey(process.env.MARKETING_WALLET!);
 
 const database = createDB(process.env.DATABASE_URL!, models);
 
@@ -77,6 +82,9 @@ export const repository: Repository = new Repository(
     port,
     host,
     domain,
+    splFee,
+    feePercentage,
+    marketingWallet,
   },
   database
 );

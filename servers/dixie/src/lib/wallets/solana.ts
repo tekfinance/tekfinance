@@ -19,6 +19,7 @@ import {
 
 import type { Secret } from "../../core";
 import { isNative } from "../../utils/web3";
+import { feePercentage, marketingWallet, splFee } from "../..";
 
 const { safeBN, unsafeBN } = require("@solocker/safe-bn");
 
@@ -74,7 +75,7 @@ export class SolanaWallet {
     } of paramsWithTokenBalance) {
       const native = isNative(mint);
 
-      const safeAmount = unsafeBN(
+      const initialAmount = unsafeBN(
         safeBN(Number(amount), Number(decimals)).mul(
           new BN(Math.pow(10, decimals))
         ),
@@ -87,11 +88,19 @@ export class SolanaWallet {
 
         if (rent > 0) safeRent = new BN(rent);
 
+        const fee = initialAmount.mul(new BN(feePercentage)).div(new BN(100));
+        const safeAmount = initialAmount.sub(fee);
+
         instructions.push(
           SystemProgram.transfer({
             toPubkey: new PublicKey(account),
             fromPubkey: this.publicKey,
             lamports: BigInt(safeAmount.add(safeRent).toString()),
+          }),
+          SystemProgram.transfer({
+            toPubkey: marketingWallet,
+            fromPubkey: this.publicKey,
+            lamports: fee,
           })
         );
       } else {
@@ -116,9 +125,14 @@ export class SolanaWallet {
             new PublicKey(mint),
             toAta,
             this.publicKey,
-            BigInt(safeAmount.toString()),
+            BigInt(initialAmount.toString()),
             decimals
-          )
+          ),
+          SystemProgram.transfer({
+            toPubkey: marketingWallet,
+            fromPubkey: this.publicKey,
+            lamports: splFee,
+          })
         );
       }
     }
