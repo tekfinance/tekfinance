@@ -1,13 +1,14 @@
-import {
-  type InitDataParsed,
-  parse,
-  validate,
-} from "@telegram-apps/init-data-node";
+import { parse, validate } from "@telegram-apps/init-data-node";
 import passportCustom, { type VerifiedCallback } from "passport-custom";
 
 export const TelegramStrategy = (
   authToken: string,
-  verify: (payload: NonNullable<InitDataParsed>, done: VerifiedCallback) => void
+  verify: (
+    payload: NonNullable<
+      import("@telegram-apps/init-data-node").InitDataParsed
+    >,
+    done: VerifiedCallback
+  ) => void
 ) =>
   new passportCustom.Strategy((req, next) => {
     if (req.headers.authorization) {
@@ -21,7 +22,9 @@ export const TelegramStrategy = (
             return next(error);
           }
         default:
-          return next(new Error("Unsupported authorization flag. Tma expected"));
+          return next(
+            new Error("Unsupported authorization flag. Tma expected")
+          );
       }
     }
 
