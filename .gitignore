@@ -3,6 +3,6 @@ dist
 .turbo 
 .next
 .env
-.env.*
+.env.prod
 out
 test.*
