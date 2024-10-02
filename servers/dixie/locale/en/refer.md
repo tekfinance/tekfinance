@@ -1,8 +1,8 @@
 *Refer Friends*
 
-Refer friends to earn tekfinance points. You get 5% on each points your friend get when token allocation begins.
+Refer a friend to tekbot. Let's grow together.
 
-You currently have invited _%counts% users_ and have _%points%_ tekbot points.
+You currently have invited _%counts% users_.
 
 > Copy url below to invite friends to use tekbot
 `%url%`
