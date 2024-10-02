@@ -68,10 +68,10 @@ export class Dixie extends Service {
           command: Dixie.fundCommand,
           description: "Get wallet address and QRCode.",
         },
-        {
-          command: Dixie.referCommand,
-          description: "Refer a friend to earn points.",
-        },
+        // {
+        // command: Dixie.referCommand,
+        // description: "Refer a friend to earn points.",
+        // },
         // {
         //   command: Dixie.couponCommand,
         //   description: "Create and fund a new coupon",
@@ -89,7 +89,7 @@ export class Dixie extends Service {
     const startCommand = privateChatOnly(onStart);
     const menuCommand = privateChatOnly(onMenu);
     const fundCommand = privateChatOnly(onFund);
-    const referCommand = privateChatOnly(onRefer);
+    //const referCommand = privateChatOnly(onRefer);
     // const couponCommand = privateChatOnly(onCoupon);
     // const redeemCommand = privateChatOnly(onRedeem);
     const settingsCommand = privateChatOnly(onSettings);
@@ -103,14 +103,14 @@ export class Dixie extends Service {
     bot.action(Dixie.menuCommand, onMenu);
     bot.action(Dixie.fundCommand, fundCommand);
     bot.action(/chain/, chainCommand);
-    bot.action(Dixie.referCommand, referCommand);
+    //bot.action(Dixie.referCommand, referCommand);
     bot.action(Dixie.settingsCommand, settingsCommand);
     // bot.action(/^confirmRedeem/, confirmRedeemCommand);
 
     bot.command(Dixie.tipCommand, onTip);
     bot.command(Dixie.menuCommand, menuCommand);
     bot.command(Dixie.fundCommand, fundCommand);
-    bot.command(Dixie.referCommand, referCommand);
+    //bot.command(Dixie.referCommand, referCommand);
     // bot.command(Dixie.redeemCommand, redeemCommand);
     // bot.command(Dixie.couponCommand, couponCommand);
     bot.command(Dixie.settingsCommand, settingsCommand);
