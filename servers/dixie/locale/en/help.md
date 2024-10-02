@@ -1,6 +1,6 @@
-*TekBot Help [🤖](tg://emoji?id=id="6039482887357600632")*
+*Solfer Help [🤖](tg://emoji?id=id="6039482887357600632")*
 
-These are list of commands supported by tekbot 
+These are list of commands supported by solfer 
 
 Private Chat Only
 These commands are available in private chat only.

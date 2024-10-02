@@ -1,4 +1,4 @@
-*TekBot Menu 🤖*
+*Solfer Menu 🤖*
 
 Enter a command or use the menu buttons below to get started.
 

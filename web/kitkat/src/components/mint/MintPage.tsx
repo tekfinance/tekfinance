@@ -30,11 +30,11 @@ export default function MintPage({ wallet, onSelect }: Props) {
   return (
     <main className="flex-1  flex flex-col p-4">
       <div className="flex-1 flex flex-col space-y-4">
-        <nav className="flex bg-dark-700 p-1 rounded-md">
-          <button className="flex-1 bg-cyan-500 text-black p-2 rounded hover:bg-cyan active:bg-cyan-500">
+        <nav className="flex bg-black/20 p-1 rounded-md">
+          <button className="flex-1 bg-violet-500 text-black p-2 rounded hover:bg-violet active:bg-violet-500">
             Mint
           </button>
-          <button className="flex-1  text-white/75">NFT</button>
+          <button className="flex-1  text-black/75">NFT</button>
         </nav>
         <div className="flex-1 flex flex-col space-y-2">
           {isPending ? (

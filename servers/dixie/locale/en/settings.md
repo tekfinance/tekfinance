@@ -1,4 +1,4 @@
-*TekBot Settings*
+*Solfer Settings*
 
 🔐 Export your private key.
 🌍 Change language settings. 

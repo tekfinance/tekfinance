@@ -35,7 +35,7 @@ export default function MintInfo({ disabled, info, onSelect, action }: Props) {
   return (
     <div
       className={clsx(
-        "flex items-center space-x-2 bg-dark-500 p-2 rounded-md  hover:bg-dark active:bg-dark-500",
+        "flex items-center space-x-2 bg-black/10 p-2 rounded-md  hover:bg-black/20 active:bg-black/10",
         [disabled ? "cursor-none" : "cursor-pointer"]
       )}
       onClick={() => {
@@ -44,7 +44,7 @@ export default function MintInfo({ disabled, info, onSelect, action }: Props) {
       }}
     >
       {isPending ? (
-        <div className="w-8 h-8 bg-dark-50 animate-pulse rounded-full" />
+        <div className="w-8 h-8 bg-black/20 animate-pulse rounded-full" />
       ) : data ? (
         <Image
           src={data.image}
@@ -59,7 +59,7 @@ export default function MintInfo({ disabled, info, onSelect, action }: Props) {
       )}
       <div className="flex-1 flex flex-col text-start">
         <p className="font-medium">{name}</p>
-        <p className="text-sm text-white/75">
+        <p className="text-sm text-black/75">
           {toUIAmount(amount, decimals)} {symbol}
         </p>
       </div>

@@ -9,9 +9,9 @@ import Provider from "@/providers";
 import { rpcURL } from "@/config";
 
 export const metadata: Metadata = {
-  title: "TekBot | Rewarding made fun",
+  title: "Solfer | Rewarding made fun",
   description:
-    "We are tekfinance, we help you reward communities, friends, family and followers with ease.",
+    "We are solfer, we help you reward communities, friends, family and followers with ease.",
 };
 
 const defaultFont = Open_Sans({
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
       <body
         className={clsx(
           defaultFont.className,
-          "antialiased fixed inset-0 flex flex-col bg-dark-900 text-white text-[15px]"
+          "antialiased fixed inset-0 flex flex-col bg-white text-black text-[15px]"
         )}
       >
         <Provider rpcURL={rpcURL}>

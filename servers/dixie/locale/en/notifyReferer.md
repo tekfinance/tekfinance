@@ -1,1 +1,1 @@
-@%referer% joined tekbot using your refer link.
+@%referer% joined solfer using your refer link.

@@ -4,7 +4,7 @@ Security Warning
 
 ⬩Do not let anyone see your key.
 ⬩Never share your private key.
-⬩TekBot support will *Never* ask for your private key 
+⬩Solfer support will *Never* ask for your private key 
 
 ||%key%||
 
