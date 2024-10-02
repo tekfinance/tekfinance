@@ -14,10 +14,10 @@ import { onRefer } from "./onRefer";
 import { onChain } from "./onChain";
 import { onRedeem } from "./onRedeem";
 import { onLanguage } from "./onLanguage";
-import { onSettings, SettingsComposer } from "./onSettings";
 import { privateChatOnly } from "./utils/methods";
 import { onConfirmRedeem } from "./onConfirmRedeem";
 import { createCouponScene, onCoupon } from "./onCoupon";
+import { onSettings, SettingsComposer } from "./onSettings";
 
 export class Dixie extends Service {
   static tipCommand = "tip";
@@ -31,7 +31,7 @@ export class Dixie extends Service {
   static couponScene = "couponScene";
   static redeemScene = "redeemScene";
   static settingsCommand = "settings";
-  static confirmRedeemCommand = "confirmRedeem";
+  static confirmRedeemCommand = "coxnfirmRedeem";
 
   register(): void {
     const { bot } = this.repository;
