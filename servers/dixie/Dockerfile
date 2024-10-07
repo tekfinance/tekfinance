@@ -2,7 +2,7 @@
 
 FROM node:22-alpine3.20 as base 
 
-RUN apk upgrade && \
+RUN apk upgrade && apk update && \
     apk add libgcc libstdc++ && \ 
     apk add make gcc g++ python3 && \
     apk add fontconfig
