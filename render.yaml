@@ -2,7 +2,7 @@ services:
   - type: web
     name: dixie
     runtime: docker 
-    plan: starter
+    plan: free
     autoDeploy: true
     dockerfilePath: servers/dixie/Dockerfile    
     buildFilter:
@@ -21,7 +21,7 @@ services:
   - type: web
     name: kitkat
     runtime: docker
-    plan: starter
+    plan: free
     autoDeploy: true
     dockerfilePath: web/kitkat/Dockerfile    
     buildFilter:
@@ -46,5 +46,5 @@ services:
 databases:
   - name: dixieDB
     user: admin
-    plan: starter
+    plan: free
     
