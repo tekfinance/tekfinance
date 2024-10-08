@@ -4,6 +4,7 @@ import type { HttpCodes } from "fastify/types/utils";
 
 export const catchRouteError = (reply: FastifyReply) => {
   return <T>(error: T) => {
+    console.debug(error);
     if (error instanceof ZodError) {
       return reply.status(400).send(error.format());
     }
