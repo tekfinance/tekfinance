@@ -22,19 +22,18 @@ export const processTip = async (
   user: Awaited<ReturnType<typeof upsertUser>>,
   { id, data }: z.infer<typeof selectMintSchema>
 ) => {
-
   const wallet = mapWallets(repository, user.wallets);
   const { database, secret, connection, bot } = repository;
   const [tip] = await getTipByUserAndId(database, user.id, id);
 
   const instructions: TransactionInstruction[] = [];
 
-  if (tip.status === "success")
+  if (tip.status === "success") {
     throw new StatusError(
       400,
       "Tip already processed. Try initiate another tip request"
     );
-
+  }
   for (const { amount, recipients } of tip.configs) {
     const wallets = (
       await getWalletsById(
@@ -66,6 +65,18 @@ export const processTip = async (
   const simulationResult = await connection.simulateTransaction(versionedTx);
 
   if (simulationResult.value.err) {
+    if (user.chat)
+      await repository.bot.telegram.sendMessage(
+        user.chat,
+        cleanText(
+          readFileSync("./locale/en/transactionError.md", "utf-8").replace(
+            "%logs%",
+            simulationResult.value.logs!.join("\n")
+          )
+        ),
+        { parse_mode: "MarkdownV2" }
+      );
+
     throw simulationResult.value;
   }
 
