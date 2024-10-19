@@ -123,6 +123,12 @@ export class SolanaWallet {
             new PublicKey(account),
             new PublicKey(mint)
           ),
+          createAssociatedTokenAccountIdempotentInstruction(
+            this.publicKey,
+            marketAta,
+            marketingWallet,
+            new PublicKey(mint)
+          ),
           createTransferCheckedInstruction(
             fromAta,
             new PublicKey(mint),
