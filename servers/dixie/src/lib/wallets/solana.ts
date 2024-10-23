@@ -65,6 +65,11 @@ export class SolanaWallet {
       return Object.assign(param, { lamports: accountInfo?.lamports ?? 0 });
     });
 
+    const oneOfInstructions: {
+      pre: Record<string, TransactionInstruction>;
+      post: Record<string, TransactionInstruction>;
+    } = { pre: {}, post: {} };
+
     for (const {
       account,
       amount,
@@ -116,19 +121,30 @@ export class SolanaWallet {
           marketingWallet
         );
 
+        let key = mint + marketAta.toBase58();
+        let hasIntruction = key in oneOfInstructions.pre;
+
+        if (!hasIntruction)
+          oneOfInstructions.pre[key] =
+            createAssociatedTokenAccountIdempotentInstruction(
+              this.publicKey,
+              marketAta,
+              marketingWallet,
+              new PublicKey(mint)
+            );
+        key = mint + toAta.toBase58();
+        hasIntruction = key in oneOfInstructions.pre;
+
+        if (!hasIntruction)
+          oneOfInstructions.pre[key] =
+            createAssociatedTokenAccountIdempotentInstruction(
+              this.publicKey,
+              toAta,
+              new PublicKey(account),
+              new PublicKey(mint)
+            );
+
         instructions.push(
-          createAssociatedTokenAccountIdempotentInstruction(
-            this.publicKey,
-            toAta,
-            new PublicKey(account),
-            new PublicKey(mint)
-          ),
-          createAssociatedTokenAccountIdempotentInstruction(
-            this.publicKey,
-            marketAta,
-            marketingWallet,
-            new PublicKey(mint)
-          ),
           createTransferCheckedInstruction(
             fromAta,
             new PublicKey(mint),
@@ -149,7 +165,9 @@ export class SolanaWallet {
       }
     }
 
-    return instructions;
+    return Object.values(oneOfInstructions.pre)
+      .concat(instructions)
+      .concat(Object.values(oneOfInstructions.post));
   }
 
   async createVersionedTransaction(
