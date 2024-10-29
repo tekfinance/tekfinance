@@ -1,14 +1,16 @@
-import { apiBaseURL } from "@/config";
-import { Api } from "@/lib";
 import clsx from "clsx";
+import type { Metadata } from "next";
 import type { IconType } from "react-icons";
-import {
-  MdCheck,
-  MdError,
-  MdErrorOutline,
-  MdPayment,
-  MdPerson,
-} from "react-icons/md";
+import { MdCheck, MdErrorOutline, MdPayment, MdPerson } from "react-icons/md";
+
+import { Api } from "@/lib";
+import { apiBaseURL } from "@/config";
+
+export const metadata: Metadata = {
+  title: "Tekfinance | Check our status page",
+  description:
+    "Tekfinance onboard hundred's of user and process thousands of transactions. Track our live progress here.",
+};
 
 export default async function StatusPage() {
   const api = new Api(apiBaseURL, "");
