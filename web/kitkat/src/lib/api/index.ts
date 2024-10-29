@@ -1,6 +1,7 @@
 import xior from "xior";
 import {
   CouponApi,
+  MicellenousApi,
   PointApi,
   RedeemApi,
   SettingsApi,
@@ -19,6 +20,7 @@ export class Api {
   readonly wallet: WalletApi;
   readonly settings: SettingsApi;
   readonly telegram: TelegramApi;
+  readonly micellenous: MicellenousApi;
 
   constructor(
     baseURL: string,
@@ -40,5 +42,6 @@ export class Api {
     this.wallet = new WalletApi(xiorInstance);
     this.settings = new SettingsApi(xiorInstance);
     this.telegram = new TelegramApi(xiorInstance);
+    this.micellenous = new MicellenousApi(xiorInstance);
   }
 }

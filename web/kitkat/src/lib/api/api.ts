@@ -6,6 +6,7 @@ import type {
   Point,
   Redeem,
   Settings,
+  Status,
   Tip,
   User,
   Wallet,
@@ -50,6 +51,16 @@ export class TelegramApi extends ApiImpl {
     return this.xior.post(
       this.buildPath("webhook"),
       JSON.parse(SafeJson.stringify({ ...args, data }))
+    );
+  }
+}
+
+export class MicellenousApi extends ApiImpl {
+  path = "micellenous";
+
+  getStatus(filter?: Record<string, string>) {
+    return this.xior.get<import("./models/status.model").Status>(
+      this.buildPathWithQuery(this.buildPath("status"), filter)
     );
   }
 }

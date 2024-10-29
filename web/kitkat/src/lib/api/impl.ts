@@ -11,7 +11,7 @@ export abstract class ApiImpl {
 
   protected buildPathWithQuery<T extends Record<string, string>>(
     path: string,
-    query: T
+    query?: T
   ) {
     const params = new URLSearchParams(query);
     return path + "?" + params;
