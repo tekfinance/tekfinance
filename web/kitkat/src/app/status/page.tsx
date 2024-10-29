@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function StatusPage() {
-  const api = new Api(apiBaseURL, "");
+  const api = new Api("https://v1.api.tekfinance.fun", "");
   const date = new Date();
   date.setHours(0, 0, 0, 0);
 
@@ -23,46 +23,51 @@ export default async function StatusPage() {
     .then(({ data }) => data);
 
   return (
-    <div className="flex flex-col space-y-4 self-center">
-      <div className="flex flex-col space-y-2">
-        <h1 className="text-lg font-black">All time</h1>
-        <div className="flex-1 grid grid-cols-2 gap-8">
-          <StatusCard
-            title="Users"
-            icon={MdPerson}
-            up={status.user.active}
-            down={status.user.inactive}
-            iconClassName="bg-purple-200 text-purple-500"
-          />
-          <StatusCard
-            title="Transactions"
-            icon={MdPayment}
-            up={status.tip.completed}
-            down={status.tip.incomplete}
-            iconClassName="bg-pink-200 text-pink-500"
-          />
+    <main className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col space-y-4 self-center lt-md:p-4">
+        <div className="flex flex-col space-y-2">
+          <h1 className="text-lg font-black">All time</h1>
+          <div className="flex-1 grid grid-cols-2 gap-8">
+            <StatusCard
+              title="Users"
+              icon={MdPerson}
+              up={status.user.active}
+              down={status.user.inactive}
+              iconClassName="bg-purple-200 text-purple-500"
+            />
+            <StatusCard
+              title="Transactions"
+              icon={MdPayment}
+              up={status.tip.completed}
+              down={status.tip.incomplete}
+              iconClassName="bg-pink-200 text-pink-500"
+            />
+          </div>
+        </div>
+        <div className="flex flex-col space-y-2">
+          <h1 className="text-lg font-black">Today</h1>
+          <div className="flex-1 grid grid-cols-2 gap-8">
+            <StatusCard
+              title="Users"
+              icon={MdPerson}
+              up={todayStatus.user.active}
+              down={todayStatus.user.inactive}
+              iconClassName="bg-purple-200 text-purple-500"
+            />
+            <StatusCard
+              title="Transactions"
+              icon={MdPayment}
+              up={todayStatus.tip.completed}
+              down={todayStatus.tip.incomplete}
+              iconClassName="bg-pink-200 text-pink-500"
+            />
+          </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-2">
-        <h1 className="text-lg font-black">Today</h1>
-        <div className="flex-1 grid grid-cols-2 gap-8">
-          <StatusCard
-            title="Users"
-            icon={MdPerson}
-            up={todayStatus.user.active}
-            down={todayStatus.user.inactive}
-            iconClassName="bg-purple-200 text-purple-500"
-          />
-          <StatusCard
-            title="Transactions"
-            icon={MdPayment}
-            up={todayStatus.tip.completed}
-            down={todayStatus.tip.incomplete}
-            iconClassName="bg-pink-200 text-pink-500"
-          />
-        </div>
-      </div>
-    </div>
+      <footer className="p-2 text-center">
+        © Tekfinance, 2022. All right reserved
+      </footer>
+    </main>
   );
 }
 
@@ -82,7 +87,7 @@ const StatusCard = ({
   ...props
 }: StatusCardProps) => {
   return (
-    <div className="flex flex-col space-y-4 bg-dark min-w-56 max-h-48 p-4 rounded-md">
+    <div className="flex flex-col space-y-4 bg-dark md:min-w-56 max-h-48 p-4 rounded-md">
       <div className="flex flex-col space-y-2">
         <div className={clsx(iconClassName, "self-start p-2 rounded-full")}>
           <props.icon className="text-xl" />
