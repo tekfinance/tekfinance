@@ -6,6 +6,9 @@ import { MdCheck, MdErrorOutline, MdPayment, MdPerson } from "react-icons/md";
 import { Api } from "@/lib";
 import { apiBaseURL } from "@/config";
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export const metadata: Metadata = {
   title: "Tekfinance | Check our status page",
   description:
