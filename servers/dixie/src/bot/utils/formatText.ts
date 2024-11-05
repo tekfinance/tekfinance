@@ -29,12 +29,15 @@ export function readFileSync(
 }
 
 export const formatList = (values: string[]) => {
-  values = Array.from(new Set(values).values());
+  values = Array.from(new Set(values));
 
+  if (values.length === 0) return "";
+  if (values.length === 1) return values[0];
   if (values.length === 2) return values.join(" and ");
-  const beforeLast = values.slice(0, values.length - 2);
+
+  const allButLast = values.slice(0, values.length - 1).join(", ");
   const last = values[values.length - 1];
-  return [beforeLast.join(", "), last].filter(Boolean).join(" and ");
+  return `${allButLast}, and ${last}`;
 };
 
 export const capitalize = (value: string) =>
