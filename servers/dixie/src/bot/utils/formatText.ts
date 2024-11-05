@@ -29,7 +29,7 @@ export function readFileSync(
 }
 
 export const formatList = (values: string[]) => {
-  values = Array.from(new Set(values));
+  values = Array.from(new Set(values).values());
 
   if (values.length === 0) return "";
   if (values.length === 1) return values[0];
