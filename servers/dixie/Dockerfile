@@ -11,7 +11,7 @@ FROM base as builder
 WORKDIR /usr/src/app
 
 COPY servers/dixie .
-RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install --frozen-lockfile
 RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn \
     cd node_modules/skia-canvas &&\
     yarn install &&\
