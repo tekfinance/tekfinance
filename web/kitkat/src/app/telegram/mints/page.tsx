@@ -5,6 +5,9 @@ import MintPage from "@/components/mint/MintPage";
 import { useWebApp } from "@/composables/useTelegram";
 import { useMintParams } from "@/composables/useMintParams";
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export default function Mint() {
   const { wallet, args } = useMintParams();
   const { api } = useApi();

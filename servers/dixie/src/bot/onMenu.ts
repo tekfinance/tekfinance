@@ -26,7 +26,7 @@ export const onMenu = catchRuntimeError(async (context: Context) => {
   const buttons = Markup.inlineKeyboard([
     [
       Markup.button.callback("Wallet", Dixie.fundCommand),
-      //Markup.button.callback("Referal Link", Dixie.referCommand),
+      // Markup.button.callback("Referal Link", Dixie.referCommand),
     ],
     [Markup.button.webApp("Token Balance", balanceLink)],
     [

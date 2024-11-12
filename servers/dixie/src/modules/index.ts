@@ -6,6 +6,7 @@ import { PointRoute } from "./points/point.route";
 import { WalletRoute } from "./wallets/wallet.route";
 import { CouponRoute } from "./coupons/coupon.route";
 import { TelegramRoute } from "./telegram/telegram.route";
+import { MicellenousRoute } from "./micellenous/micellenous.route";
 
 export class Api extends Service {
   register() {
@@ -16,6 +17,7 @@ export class Api extends Service {
       CouponRoute,
       TelegramRoute,
       PointRoute,
+      MicellenousRoute,
     ];
     Routes.map((Route) => {
       const route = new Route(this.repository);

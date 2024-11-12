@@ -7,7 +7,7 @@ export const settings = pgTable("settings", {
   locale: text("locale", { enum: LocaleEnum }).default("en").notNull(),
   chain: text("chain", { enum: ChainEnum }).default("solana").notNull(),
   user: serial("user")
-    .references(() => users.id)
+    .references(() => users.id, {onDelete: "cascade"})
     .unique()
     .notNull(),
 });

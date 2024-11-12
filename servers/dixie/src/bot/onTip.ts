@@ -89,7 +89,7 @@ export const onTip = catchRuntimeError(async (context: Context) => {
 
       return context.replyWithMarkdownV2(
         cleanText(
-          readFileSync("./locale/en/tipError.md", "utf-8").replace(
+          readFileSync("./locale/en/tipInvalidCommand.md", "utf-8").replace(
             "%usernames%",
             formatList(untippedUsers)
           )

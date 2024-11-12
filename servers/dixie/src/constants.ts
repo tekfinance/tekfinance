@@ -42,3 +42,4 @@ export const Social = {
 export const SocialEnum = Object.values(Social) as unknown as Enum<
   typeof Social
 >;
+

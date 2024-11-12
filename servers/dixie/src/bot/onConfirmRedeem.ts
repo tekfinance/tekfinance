@@ -60,11 +60,11 @@ export const onConfirmRedeem = catchRuntimeError(async (context) => {
               instructions
             );
 
-          const simulationResults = await connection.simulateTransaction(
+          const simulationResult = await connection.simulateTransaction(
             versionedTx
           );
 
-          if (simulationResults.value.err) {
+          if (simulationResult.value.err) {
             await updateRedeemByUserAndId(database, authUser.id, redeemed.id, {
               status: "error",
             });
@@ -73,7 +73,7 @@ export const onConfirmRedeem = catchRuntimeError(async (context) => {
                 readFileSync(
                   "./locale/en/transactionError.md",
                   "utf-8"
-                ).replace("%logs%", simulationResults.value.logs!.join("\n"))
+                ).replace("%logs%", simulationResult.value.logs!.join("\n"))
               )
             );
           }
