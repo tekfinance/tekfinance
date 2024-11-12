@@ -1,9 +1,9 @@
-# syntax = docker/dockerfile:1.2
+#syntax = docker/dockerfile:1.2
 
 FROM node:22-alpine3.20 as base 
 
-RUN apk upgrade && \
-    apk add libgcc libstdc++ && \ 
+RUN apk upgrade && apk update && \
+    apk add libgcc libstdc++ libc6-compat && \ 
     apk add make gcc g++ python3 && \
     apk add fontconfig
 
@@ -11,7 +11,7 @@ FROM base as builder
 WORKDIR /usr/src/app
 
 COPY servers/dixie .
-RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install --frozen-lockfile
 RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn \
     cd node_modules/skia-canvas &&\
     yarn install &&\
