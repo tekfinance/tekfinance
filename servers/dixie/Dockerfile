@@ -28,4 +28,4 @@ RUN node ./node_modules/@fastify/secure-session/genkey.js > secret-key
 ENV NODE_ENV=production
 ENV HOSTNAME="0.0.0.0"
 
-CMD yarn migrate && node dist/index.js
+CMD yarn migrate && node dist/index.js\\
