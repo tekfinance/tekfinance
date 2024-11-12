@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: dixie-clone
+    name: dixieClone
     runtime: docker 
     plan: starter
     autoDeploy: true
@@ -11,15 +11,15 @@ services:
         - servers/dixie/**/*.ts
         - servers/dixie/Dockerfile
     envVars:
-      - fromGroup: servers/dixie-clone
+      - fromGroup: servers/dixieClone
       - key: DATABASE_URL
         fromDatabase:
-          name: dynamoDB
+          name: dixieCloneDB
           property: connectionString
     domains:
       - v1.api.clone.tekfinance.fun
   - type: web
-    name: kitkat-clone
+    name: kitkatClone
     runtime: docker
     plan: starter
     autoDeploy: true
@@ -30,21 +30,20 @@ services:
         - web/kitkat/**/*.ts
         - web/kitkat/Dockerfile
     envVars:
-      - fromGroup: web/kitkat-clone
+      - fromGroup: web/kitkatClone
       - key: API_BASE_URL
         fromService: 
           type: web
-          name: dixie-clone
+          name: dixieClone
           envVarKey: RENDER_EXTERNAL_URL
       - key: NEXT_PUBLIC_API_BASE_URL
         fromService: 
           type: web
-          name: dixie-clone
+          name: dixieClone
           envVarKey: RENDER_EXTERNAL_URL
     domains:
       - bot.clone.tekfinance.fun
 databases:
-  - name: dynamoDB
+  - name: dixieCloneDB
     user: admin
-    plan: starter
     
