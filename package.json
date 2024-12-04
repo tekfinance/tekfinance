@@ -3,6 +3,8 @@
   "private": true,
   "packageManager": "yarn@1.22.22",
   "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
     "clean": "rimraf -rf node_modules .turbo dist out */*/.turbo */packages/dist */*/.next */*/node_modules */bun.lockb */*/bun.lockb"
   },
   "devDependencies": {
